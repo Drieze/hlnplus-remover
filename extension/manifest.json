@@ -4,7 +4,12 @@
   "name": "HLNPlus Remover",
   "description": "Remove all the HLNPlus articles from the hln.be website",
   "author": "Dries Deboosere",
-  "icons": { "16": "images/icon.png", "32": "imagas/icon.png" },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "64": "images/icon64.png",
+    "128": "images/icon128.png"
+  },
 
   "content_scripts": [
     {
