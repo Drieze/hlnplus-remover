@@ -1,8 +1,4 @@
-.flow-large-vertical-teaser--plus {
-    display: none;
-}
-
-.dossier-carousel-vertical-teaser--plus {
+.bakskes-horizontal-teaser--plus {
     display: none;
 }
 
@@ -10,31 +6,15 @@
     display: none;
 }
 
-.flow-medium-vertical-teaser--plus {
+.dossier-carousel-vertical-teaser--plus {
     display: none;
 }
 
-.bakskes-horizontal-teaser--plus {
+.dossier-large-horizontal-teaser--plus {
     display: none;
 }
 
-.navigation-section-carousel-vertical-teaser--plus {
-    display: none;
-}
-
-.navigation-section-carousel-horizontal-teaser--plus {
-    display: none;
-}
-
-.top-navigation-vertical-teaser--plus {
-    display: none;
-}
-
-.top-navigation-horizontal-teaser--plus {
-    display: none;
-}
-
-.popular-region-horizontal-teaser--plus {
+.dossier-large-vertical-teaser--plus {
     display: none;
 }
 
@@ -42,6 +22,38 @@
     display: none;
 }
 
+.flow-medium-vertical-teaser--plus {
+    display: none;
+}
+
+.flow-large-vertical-teaser--plus {
+    display: none;
+}
+
+.popular-region-horizontal-teaser--plus {
+    display: none;
+}
+
+.popular-region-vertical-teaser--plus {
+    display: none;
+}
+
+.navigation-section-carousel-horizontal-teaser--plus {
+    display: none;
+}
+
+.navigation-section-carousel-vertical-teaser--plus {
+    display: none;
+}
+
 .tablet-vertical-teaser--plus {
+    display: none;
+}
+
+.top-navigation-horizontal-teaser--plus {
+    display: none;
+}
+
+.top-navigation-vertical-teaser--plus {
     display: none;
 }
