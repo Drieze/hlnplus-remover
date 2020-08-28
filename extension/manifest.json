@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "css": ["style.css"],
-      "matches": ["https://www.hln.be/*"]
+      "matches": ["https://*.hln.be/*"]
     }
   ]
 }
