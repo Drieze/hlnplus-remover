@@ -14,6 +14,10 @@
     display: none;
 }
 
+.col--sidebar{
+    height: 470px; 
+}
+
 .dossier-large-vertical-teaser--plus {
     display: none;
 }
@@ -50,10 +54,30 @@
     display: none;
 }
 
+.teaser--plus {
+    display: none;
+}
+
 .top-navigation-horizontal-teaser--plus {
     display: none;
 }
 
 .top-navigation-vertical-teaser--plus {
+    display: none;
+}
+
+/* Mobile */
+.ankeiler--plus {
+    display: none;
+}
+.fjs-vertical-plus-teaser{
+    display: none;
+}
+
+.horizontal-plus-flow-teaser {
+    display:none;
+}
+
+.vertical-navigation-carousel-teaser--plus {
     display: none;
 }
