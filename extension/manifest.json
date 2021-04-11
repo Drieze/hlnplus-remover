@@ -1,6 +1,6 @@
 {
-  "version": "1.2",
-  "manifest_version": 2,
+  "version": "1.3",
+  "manifest_version": 3,
   "name": "HLNPlus Remover",
   "description": "Remove all the HLNPlus articles from the hln.be website",
   "author": "Dries Deboosere",
@@ -10,11 +10,14 @@
     "64": "images/icon64.png",
     "128": "images/icon128.png"
   },
-
   "content_scripts": [
     {
-      "css": ["style.css"],
-      "matches": ["https://*.hln.be/*"]
+      "js": [
+        "script.js"
+      ],
+      "matches": [
+        "https://*.hln.be/*"
+      ]
     }
   ]
 }
