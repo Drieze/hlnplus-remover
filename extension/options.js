@@ -3,6 +3,7 @@ function save_options() {
     var advertisement = document.getElementById('advertisement').checked;
     var shop = document.getElementById('shop').checked;
     var footer = document.getElementById('footer').checked;
+    var compact = document.getElementById('compact').checked;
     var comments = document.getElementById('comments').checked;
 
     chrome.storage.sync.set(
@@ -11,6 +12,7 @@ function save_options() {
             hideAdvertisement: advertisement,
             hideShop: shop,
             hideFooter: footer,
+            compact: compact,
             hideComments: comments
     }});
 }
@@ -22,6 +24,7 @@ function restore_options() {
         document.getElementById('advertisement').checked = items.properties.hideAdvertisement;
         document.getElementById('shop').checked = items.properties.hideShop;
         document.getElementById('footer').checked = items.properties.hideFooter;
+        document.getElementById('compact').checked = items.properties.compact;
         document.getElementById('comments').checked = items.properties.hideComments;
 
     });

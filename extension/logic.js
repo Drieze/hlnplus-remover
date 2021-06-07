@@ -1,28 +1,27 @@
+//default.js must be import by the manifest.
+
+//Load the properties taking into defaults
 chrome.storage.sync.get("properties", ({ properties }) => {
-    properties = Object.assign({
-        hidePlusArticles: true,
-        hideAdvertisement: true,
-        hideShop: true,
-        hideFooter: true,
-        hideComments: false,
-        stack: true
-    }, properties);
+    properties = Object.assign(defaults, properties);
     if(properties.hidePlusArticles) {
         var plusArticles = $('.plus-label').closest('article, li');
-        removeArticles(plusArticles);
+        hideArticles(plusArticles);
 
-        //the invitation to buy a subscription
+        //The tempting offer to buy a subscription
         $('*[data-temptation-position]').hide();
         //Hide Exclusief voor abonnees
         $('*:contains("Exclusief voor abonnees")').closest('section').parent().hide();
+        //Links found on the article page just contain (+) as text
         $('*.article__paragraph:contains("(+)")').hide();
     }
-    if(properties.hideAdvertisement) {
-        var advertisements = $('article.ankeiler--advertisement');
 
-        removeArticles(advertisements);
+    if(properties.hideAdvertisement) {
+        //Hide advertisement spaces
+        var advertisements = $('article.ankeiler--advertisement');
+        hideArticles(advertisements);
         $('advertisement').hide();
     }   
+
     if(properties.hideShop) {
         //Hide HLN shop
         $('span:contains("HLN Shop")').closest('.widget').hide();
@@ -35,49 +34,39 @@ chrome.storage.sync.get("properties", ({ properties }) => {
         //Hide Comments and Comments counters
         $('#comments').hide();
         $('.comments-counter').hide();
-    }  
-    if(properties.hidePlusArticles || properties.hideAdvertisement) {
+    }
+    //Make filtered webpage compact
+    if(properties.compact) {
         stackTiles();
     }
   });
 
-function stackColumns() {
-    var firstPrimaryCol = $('.col--primary').first();
-    $('.col--primary').each(function (index, element) {
-        if (index > 0) {
-            firstPrimaryCol.append(element.children);
-        }
-    });
-    var firstSecondaryCol = $('.col--secondary').first();
-    $('.col--secondary').each(function (index, element) {
-        if (index > 0) {
-            firstSecondaryCol.append(element.children);
-        }
+
+/**
+ * Stack the tiles inside each .col-primary (basically a section)
+ * into a single big tile-grid.
+ */
+function stackTiles() {
+    $('.col--primary').each(function() {
+        var grids = $(this).find('.tile-grid');
+        var firstTileGrid = grids.first();
+        grids.each(function(index,element) {
+            if (index > 0) {
+                firstTileGrid.append(this.children);
+            }
+        });
     });
 }
 
-function stackTiles() {
-    $('.tile-grid').each((index, element) => {
-        for (i = 0; i < element.children.length; i++) {
-            var className = findMatchingClass(element.children[i].classList);
-            if(className) {
-                element.children[i].classList.remove(className);
-                if(element.children[i].is(":visible")) {
-                    element.children[i].classList.add('tile--' + (i+1));
-                }
-            }
-          }   
-        });
-}
-function findMatchingClass(classList) {
-    for(className in classList) {
-        if(className.startsWith('tile--')) {
-            return className;
-        }
+
+/**
+ * Hide the articles and their significant parent
+ */
+function hideArticles( selectors ) {
+    //The paywall is shown when the user has reached a HLN+ article
+    //In this case, we let him see it otherwise it's confusing
+    if (selectors.siblings('#fjs-paywall-top').length == 0) {
+        selectors.hide();
+        selectors.closest('li.tile, li.results__list-item, .sections-dossier__primary').hide();
     }
-    return null;
-}
-function removeArticles( selectors ) {
-    selectors.hide();
-    selectors.closest('li.tile, li.results__list-item, .sections-dossier__primary').hide();
 }
