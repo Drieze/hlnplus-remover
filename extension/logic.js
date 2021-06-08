@@ -67,6 +67,6 @@ function hideArticles( selectors ) {
     //In this case, we let him see it otherwise it's confusing
     if (selectors.siblings('#fjs-paywall-top').length == 0) {
         selectors.hide();
-        selectors.closest('li.tile, li.results__list-item, .sections-dossier__primary').hide();
+        selectors.closest('li.tile, li.results__list-item, .sections-dossier__primary, .sections-region-favorite__griditem').hide();
     }
 }
