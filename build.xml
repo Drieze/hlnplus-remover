@@ -1,0 +1,50 @@
+<project name="HLNPlusRemover" default="build" basedir=".">
+	
+	<target name="build" depends="properties,clean">
+		<zip destfile="target/${chrome_name}">
+            <fileset dir="extension">
+                <include name="**/**"/>
+            </fileset>
+        </zip>
+        <zip destfile="target/${firefox_name}">
+            <fileset dir="extension">
+                <include name="**/**"/>
+                <exclude name="manifest.json"/>
+            </fileset>
+            <fileset dir="firefox">
+                <include name="manifest.json" />
+            </fileset>
+        </zip>
+	</target>
+	
+	<target name="properties">
+		<loadfile srcFile="extension/manifest.json" property="chrome-version">
+			<filterchain>
+				<replaceregex pattern='.*"version": "(.*?)".*' flags="s" byline="false" replace="\1" />	
+			</filterchain>
+		</loadfile>
+        <loadfile srcFile="firefox/manifest.json" property="firefox-version">
+			<filterchain>
+				<replaceregex pattern='.*"version": "(.*?)".*' flags="s" byline="false" replace="\1" />	
+			</filterchain>
+		</loadfile>
+		<property name="chrome_name" value="HLNPlusRemover.${chrome-version}.zip" />
+		<property name="firefox_name" value="HLNPlusRemover.${firefox-version}.xpi" />
+
+		<echo>Version Chrome: ${chrome-version}</echo>
+        <echo>Version Firefox: ${firefox-version}</echo>
+
+		<echo>Zip Name: ${chrome_name}</echo>
+        <echo>Zip Name: ${firefox_name}</echo>
+
+	</target>
+	
+	<target name="clean">
+		<echo>Deleting old target</echo>
+		<delete>
+			<fileset dir="target" >
+                <include name="**/**" />
+            </fileset>
+		</delete>
+	</target>
+</project>

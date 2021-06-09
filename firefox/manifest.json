@@ -1,0 +1,30 @@
+{
+  "version": "1.4",
+  "manifest_version": 2,
+  "name": "HLNPlus Remover",
+  "description": "Remove all the HLNPlus articles from the hln.be website",
+  "author": "Dries Deboosere",
+  "permissions": ["storage"],
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "64": "images/icon64.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.hln.be/*"],
+      "js": [ "jquery-3.6.0.min.js", "defaults.js", "logic.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@example.com",
+      "strict_min_version": "42.0"    
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}
