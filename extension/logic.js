@@ -3,24 +3,21 @@
 //Load the properties taking into defaults
 chrome.storage.sync.get("properties", ({ properties }) => {
     properties = Object.assign(defaults, properties);
-    if(properties.hidePlusArticles) {
-        var plusArticles = $('.plus-label').closest('article, li');
-        hideArticles(plusArticles);
 
-        //The tempting offer to buy a subscription
-        $('*[data-temptation-position]').hide();
-        //Hide Exclusief voor abonnees
-        $('*:contains("Exclusief voor abonnees")').closest('section').parent().hide();
-        //Links found on the article page just contain (+) as text
-        $('*.article__paragraph:contains("(+)")').hide();
-    }
+    var plusArticles = $('.plus-label').closest('article, li');
+    hideArticles(plusArticles);
 
-    if(properties.hideAdvertisement) {
-        //Hide advertisement spaces
-        var advertisements = $('article.ankeiler--advertisement');
-        hideArticles(advertisements);
-        $('advertisement').hide();
-    }   
+    //The tempting offer to buy a subscription
+    $('*[data-temptation-position]').hide();
+    //Hide Exclusief voor abonnees
+    $('*:contains("Exclusief voor abonnees")').closest('section').parent().hide();
+    //Links found on the article page just contain (+) as text
+    $('*.article__paragraph:contains("(+)")').hide();
+
+    //Hide advertisement spaces
+    var advertisements = $('article.ankeiler--advertisement');
+    hideArticles(advertisements);
+    $('advertisement').hide();
 
     if(properties.hideShop) {
         //Hide HLN shop
@@ -36,9 +33,8 @@ chrome.storage.sync.get("properties", ({ properties }) => {
         $('.comments-counter').hide();
     }
     //Make filtered webpage compact
-    if(properties.compact) {
-        stackTiles();
-    }
+    stackTiles();
+    removeEmptyDossiers();
   });
 
 
@@ -69,4 +65,17 @@ function hideArticles( selectors ) {
         selectors.hide();
         selectors.closest('li.tile, li.results__list-item, .sections-dossier__primary, .sections-region-favorite__griditem, .sections-dossier__list-item').hide();
     }
+}
+
+function removeEmptyDossiers() {
+    $('.sections-dossier__list').each(function() {
+        if($(this).find('.sections-dossier__list-item:visible').length === 0) {
+            $(this).hide();
+        }
+    });
+    $('.sections-dossier, .sections-dossier--full-width').each(function() {
+        if($(this).find('.sections-dossier__primary:visible, .sections-dossier__list:visible') === 0) {
+            $(this).hide();
+        }
+    });
 }
