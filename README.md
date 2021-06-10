@@ -6,3 +6,9 @@ Remove the HLN+ articles from the HLN website
 ![](/store%20images/920x680.png)
 ![](/store%20images/screenshot-options.png)
 
+## Contributors
+<a href="https://github.com/Drieze/chromium-extension-hlnplus-remover/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Drieze/chromium-extension-hlnplus-remover" />
+</a>
+
+Made with [contributors-img](https://contrib.rocks).
