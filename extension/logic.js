@@ -73,8 +73,14 @@ function removeEmptyDossiers() {
             $(this).hide();
         }
     });
+    $('.sections-region-favorite__left').each(function() {
+        if($(this).find('.sections-region-favorite__griditem:visible').length === 0) {
+            $(this).hide();
+        }
+    });
+    
     $('.sections-dossier, .sections-dossier--full-width').each(function() {
-        if($(this).find('.sections-dossier__primary:visible, .sections-dossier__list:visible') === 0) {
+        if($(this).find('.sections-dossier__primary:visible, .sections-dossier__list:visible').length === 0) {
             $(this).hide();
         }
     });
