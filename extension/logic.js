@@ -80,6 +80,18 @@ function removeEmptyDossiers() {
     });
     
     $('.sections-dossier, .sections-dossier--full-width').each(function() {
+        //If we removed the primary, the header will now be displayed over the list
+        //We will fix this by moving the list a bit down
+        if($(this).find('.header__title').css('display') === 'inline') {
+            var visibleListItems = $(this).find('.sections-dossier__list:visible');
+            var visibilePrimaries = visibleListItems.prev('.sections-dossier__primary:visible');
+            if(visibleListItems.length > 0 && visibilePrimaries.length === 0) {
+                var height = $(this).find('header.header--dossier').css("height");
+                visibleListItems.css('padding-top', height);
+            }
+        }
+
+
         if($(this).find('.sections-dossier__primary:visible, .sections-dossier__list:visible').length === 0) {
             $(this).hide();
         }
