@@ -1,5 +1,5 @@
 {
-  "version": "1.4.1",
+  "version": "1.4.2",
   "manifest_version": 3,
   "name": "HLNPlus Remover",
   "description": "Remove all the HLNPlus articles from the hln.be website",
