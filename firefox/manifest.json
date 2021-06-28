@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["https://*.hln.be/*"],
-      "js": [ "jquery-3.6.0.min.js", "defaults.js", "logic.js"]
+      "js": [ "jquery-3.6.0.min.js", "defaults.js", "logic.js"],
+      "run_at": "document_start"
     }
   ],
   "browser_specific_settings": {
