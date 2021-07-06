@@ -1,5 +1,5 @@
 {
-  "version": "1.4.1",
+  "version": "1.4.2",
   "manifest_version": 3,
   "name": "HLNPlus Remover",
   "description": "Remove all the HLNPlus articles from the hln.be website",
@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["https://*.hln.be/*"],
-      "js": [ "jquery-3.6.0.min.js", "defaults.js", "logic.js"]
+      "js": [ "jquery-3.6.0.min.js", "defaults.js", "logic.js"],
+      "run_at": "document_start"
     }
   ],
   "options_ui": {

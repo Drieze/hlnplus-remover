@@ -15,6 +15,10 @@ It will remove the HLN+ articles from the website and you can setup following op
 ## HLN+ Remover options
 ![](/store%20images/screenshot-options.png)
 
+## How to build
+Update the version inside the manifest.json in extension and firefox directories.
+Use ant (run 'ant' in commandline) to build, these will generate the xpi & zip files in the target folder.
+
 ## Contributors
 <a href="https://github.com/Drieze/chromium-extension-hlnplus-remover/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Drieze/chromium-extension-hlnplus-remover" />
